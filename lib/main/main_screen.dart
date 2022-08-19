@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:autoclave/calendar/calendar_page.dart';
 import 'package:autoclave/note/note_page.dart';
 import 'package:autoclave/alarm/alarm_page.dart';
 import 'package:autoclave/setting/setting_page.dart';
@@ -11,6 +10,8 @@ import '../control/control_page.dart';
 import 'bloc/main_bloc.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +21,7 @@ class MainScreen extends StatelessWidget {
           IndexedStack(
               index: context.watch<MainBloc>().state.selectedT,
               children: [
-                ControlPage(),
+                const ControlPage(),
                 NotePage(),
                 AlarmPage(),
                 SettingPage(),

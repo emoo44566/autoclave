@@ -1,3 +1,4 @@
+import 'package:autoclave/control/utils/control_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,8 @@ import 'package:autoclave/data/note_data_provider.dart';
 import 'package:autoclave/data/note_repository.dart';
 import 'package:autoclave/main/bloc/main_bloc.dart';
 import 'package:autoclave/addnote/add_note.dart';
+import 'control/bloc/control_bloc.dart';
+import 'control/bloc/control_bloc.dart';
 import 'main/main_screen.dart';
 import 'note/bloc/note_bloc.dart';
 import 'calendar/bloc/calendar_bloc.dart';
@@ -70,8 +73,12 @@ class AutoclaveApp extends StatelessWidget {
           BlocProvider(
             create: (_) => AddNoteBloc(),
           ),
+          BlocProvider(
+            create: (_) =>
+                ControlBloc(const ControlInitial(ControlModel(22, 0))),
+          ),
         ],
-        child: MainScreen(),
+        child: const MainScreen(),
       ),
     );
   }
