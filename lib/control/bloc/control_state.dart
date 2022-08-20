@@ -17,7 +17,7 @@ class ControlInitial extends ControlState {
       : super(controlModel: controlModel);
 
   @override
-  String toString() => "ControlInitial ${super}";
+  String toString() => "ControlInitial " + super.toString();
 }
 
 class ControlPreCheck extends ControlState {
@@ -26,7 +26,7 @@ class ControlPreCheck extends ControlState {
       : super(controlModel: controlModel);
 
   @override
-  String toString() => "ControlPreCheck ${super}";
+  String toString() => "ControlPreCheck " + super.toString();
 }
 
 class ControlStart extends ControlState {
@@ -34,15 +34,20 @@ class ControlStart extends ControlState {
       : super(controlModel: controlModel);
 
   @override
-  String toString() => "ControlStart ${super}";
+  String toString() => "ControlStart " + super.toString();
 }
 
 class ControlInGoal extends ControlState {
-  const ControlInGoal(ControlModel controlModel)
+  final int seconds;
+
+  const ControlInGoal(ControlModel controlModel, this.seconds)
       : super(controlModel: controlModel);
 
   @override
-  String toString() => "ControlInGoal ${super}";
+  List<Object> get props => [controlModel, seconds];
+
+  @override
+  String toString() => "ControlInGoal " + super.toString() + " - $seconds";
 }
 
 class ControlAfterGoal extends ControlState {
@@ -50,7 +55,7 @@ class ControlAfterGoal extends ControlState {
       : super(controlModel: controlModel);
 
   @override
-  String toString() => "ControlAfterGoal ${super}";
+  String toString() => "ControlAfterGoal " + super.toString();
 }
 
 class ControlFinished extends ControlState {
@@ -58,5 +63,5 @@ class ControlFinished extends ControlState {
       : super(controlModel: controlModel);
 
   @override
-  String toString() => "ControlFinished ${super}";
+  String toString() => "ControlFinished " + super.toString();
 }

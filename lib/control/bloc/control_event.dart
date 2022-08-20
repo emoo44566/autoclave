@@ -16,3 +16,16 @@ class ControlNextStep extends ControlEvent {
   @override
   String toString() => "ControlNextStep";
 }
+
+class ControlUpdateStep extends ControlEvent {
+  final ControlModel controlModel;
+  final int seconds;
+
+  const ControlUpdateStep(this.controlModel, this.seconds);
+
+  @override
+  List<Object> get props => [controlModel, seconds];
+
+  @override
+  String toString() => "ControlUpdateStep";
+}

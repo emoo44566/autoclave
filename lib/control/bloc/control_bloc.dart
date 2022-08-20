@@ -15,11 +15,28 @@ class ControlBloc extends Bloc<ControlEvent, ControlState> {
           else if (state is ControlPreCheck)
             emit(ControlStart(state.controlModel))
           else if (state is ControlStart)
-            emit(ControlInGoal(state.controlModel))
+            emit(ControlInGoal(state.controlModel, 0))
           else if (state is ControlInGoal)
             emit(ControlAfterGoal(state.controlModel))
           else if (state is ControlAfterGoal)
             emit(ControlFinished(state.controlModel))
+          else if (state is ControlFinished)
+            emit(const ControlInitial(ControlModel(23, 15)))
+        });
+
+    on<ControlUpdateStep>((event, emit) => {
+          if (state is ControlInitial)
+            emit(ControlInitial(event.controlModel))
+          else if (state is ControlPreCheck)
+            emit(ControlPreCheck(event.controlModel))
+          else if (state is ControlStart)
+            emit(ControlStart(event.controlModel))
+          else if (state is ControlInGoal)
+            emit(ControlInGoal(event.controlModel, event.seconds))
+          else if (state is ControlAfterGoal)
+            emit(ControlAfterGoal(event.controlModel))
+          else if (state is ControlFinished)
+            emit(ControlFinished(event.controlModel))
         });
   }
 
