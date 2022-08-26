@@ -44,7 +44,7 @@ class ControlPage extends StatelessWidget {
                                 state.controlModel.temprature)),
                         const SizedBox(width: 10),
                         Expanded(
-                            child: gauge(context, "فشار", 0, 27,
+                            child: gauge(context, "فشار", 0, 4.2,
                                 state.controlModel.pressure)),
                       ],
                     ),
@@ -93,14 +93,14 @@ class ControlPage extends StatelessWidget {
         t = state.controlModel.temprature;
         p = state.controlModel.pressure;
         t += .7;
-        if (t > 80) p += .27;
+        if (t > 100) p += .04;
 
         if (t >= 121) t = 121.0;
-        if (p >= 15) p = 15.0;
-        if (t == 121.0 && p == 15.0) {
+        if (p >= 1.2) p = 1.2;
+        if (t == 121.0 && p == 1.2) {
           context
               .read<ControlBloc>()
-              .add(const ControlUpdateStep(ControlModel(121, 15), 0));
+              .add(const ControlUpdateStep(ControlModel(121, 1.2), 0));
           context.read<ControlBloc>().add(const ControlNextStep());
         } else {
           context
@@ -113,11 +113,11 @@ class ControlPage extends StatelessWidget {
         if (state.seconds == 960) {
           context
               .read<ControlBloc>()
-              .add(const ControlUpdateStep(ControlModel(121, 15), 960));
+              .add(const ControlUpdateStep(ControlModel(121, 1.2), 960));
           context.read<ControlBloc>().add(const ControlNextStep());
         } else {
           context.read<ControlBloc>().add(ControlUpdateStep(
-              const ControlModel(121, 15), state.seconds + 1));
+              const ControlModel(121, 1.2), state.seconds + 1));
         }
       });
     } else if (state is ControlAfterGoal) {
@@ -127,7 +127,7 @@ class ControlPage extends StatelessWidget {
         t = state.controlModel.temprature;
         p = state.controlModel.pressure;
         t -= .7;
-        p -= .17;
+        p -= .02;
 
         if (t < 23) t = 23;
         if (p < 0) p = 0;
@@ -198,7 +198,7 @@ class ControlPage extends StatelessWidget {
               children: <Widget>[
                 Expanded(child: itemWidget(context, "دمای هدف", 121)),
                 const SizedBox(width: 8),
-                Expanded(child: itemWidget(context, "فشار هدف", 15)),
+                Expanded(child: itemWidget(context, "فشار هدف", 1.2)),
                 const SizedBox(width: 8),
                 Expanded(child: itemWidget(context, "مدت", 16)),
               ],
@@ -446,7 +446,7 @@ class ControlPage extends StatelessWidget {
     );
   }
 
-  Widget itemWidget(context, String title, int number) {
+  Widget itemWidget(context, String title, double number) {
     return Container(
       decoration: BoxDecoration(
           color: Color.fromARGB(5, 20, 20, 20),
