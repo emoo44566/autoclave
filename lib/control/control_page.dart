@@ -17,11 +17,22 @@ class ControlPage extends StatelessWidget {
       child: Stack(
         children: [
           // Background(),
+          Image.asset('assets/images/bg.jpg',
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              fit: BoxFit.cover),
           SizedBox.expand(
             child: Container(
               margin: const EdgeInsets.only(left: 15.0, right: 15.0, top: 48.0),
               child: Column(
                 children: [
+                  Text(
+                    "صنعت سازان اسرار",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4
+                        ?.copyWith(fontSize: 14),
+                  ),
                   startWidget(state, context),
                   const SizedBox(height: 10),
                   if (state is ControlPreCheck ||
@@ -148,7 +159,8 @@ class ControlPage extends StatelessWidget {
   Container startWidget(ControlState state, BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-          color: Color.fromARGB(10, 20, 20, 20),
+          color: Color.fromARGB(180, 220, 220, 220),
+          // backgroundBlendMode: BlendMode.colorBurn,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -212,7 +224,8 @@ class ControlPage extends StatelessWidget {
   Container checkWidget(ControlState state, BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-          color: Color.fromARGB(10, 20, 20, 20),
+          color: Color.fromARGB(180, 220, 220, 220),
+          // backgroundBlendMode: BlendMode.colorBurn,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -256,7 +269,8 @@ class ControlPage extends StatelessWidget {
       ControlState state, BuildContext context, String msg) {
     return Container(
       decoration: const BoxDecoration(
-          color: Color.fromARGB(10, 20, 20, 20),
+          color: Color.fromARGB(180, 220, 220, 220),
+          // backgroundBlendMode: BlendMode.colorBurn,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -276,7 +290,8 @@ class ControlPage extends StatelessWidget {
       ControlState state, BuildContext context, int seconds) {
     return Container(
       decoration: const BoxDecoration(
-          color: Color.fromARGB(10, 20, 20, 20),
+          color: Color.fromARGB(180, 220, 220, 220),
+          // backgroundBlendMode: BlendMode.colorBurn,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -319,7 +334,8 @@ class ControlPage extends StatelessWidget {
   Container controlFinishedWidget(ControlState state, BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-          color: Color.fromARGB(10, 20, 20, 20),
+          color: Color.fromARGB(180, 220, 220, 220),
+          // backgroundBlendMode: BlendMode.colorBurn,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -372,7 +388,8 @@ class ControlPage extends StatelessWidget {
     double third = (to - from) / 3;
     return Container(
       decoration: const BoxDecoration(
-          color: Color.fromARGB(10, 20, 20, 20),
+          color: Color.fromARGB(180, 220, 220, 220),
+          // backgroundBlendMode: BlendMode.colorBurn,
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Column(
         children: [
